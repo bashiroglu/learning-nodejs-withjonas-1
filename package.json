@@ -1,0 +1,23 @@
+{
+  "name": "learning-nodejs-withjonas-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bashiroglu/learning-nodejs-withjonas-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bashiroglu/learning-nodejs-withjonas-1/issues"
+  },
+  "homepage": "https://github.com/bashiroglu/learning-nodejs-withjonas-1#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}

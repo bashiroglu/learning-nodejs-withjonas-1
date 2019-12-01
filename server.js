@@ -8,6 +8,8 @@ const server = http.createServer((req, res) => {
     res.end('hi from overview');
   } else if (pathName === '/product') {
     res.end('hi from product');
+  } else if (pathName === '/api') {
+    res.end('hi from api');
   } else {
     res.writeHead(404, {
       'Content-type': 'text/html',
