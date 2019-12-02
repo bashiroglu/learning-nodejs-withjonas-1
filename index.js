@@ -31,20 +31,74 @@ const superagent = require('superagent');
 // });
 // console.log('top level');
 
-fs.readFile(`${__dirname}/dog.txt`, (err, data) => {
-  console.log(`breed: ${data}`);
-  superagent
-    .get(`https://dog.ceo/api/breed/${data}/images/random`)
-    .end((err, res) => {
-      if (err) {
-        console.log('fetching err', err.message);
-      }
-      //   console.log(res.body.message);
-      fs.writeFile('dog-img.txt', res.body.message, err => {
-        console.log('image done');
-        if (err) {
-          console.log('image err', err);
-        }
-      });
-    });
-});
+// fs.readFile(`${__dirname}/dog.txt`, (err, data) => {
+//   console.log(`breed: ${data}`);
+//   superagent
+//     .get(`https://dog.ceo/api/breed/${data}/images/random`)
+//     .end((err, res) => {
+//       if (err) {
+//         console.log('fetching err', err.message);
+//       }
+//       //   console.log(res.body.message);
+//       fs.writeFile('dog-img.txt', res.body.message, err => {
+//         console.log('image done');
+//         if (err) {
+//           console.log('image err', err);
+//         }
+//       });
+//     });
+// });
+
+// const readFilePro = file => {
+//   return new Promise((resolve, reject) => {
+//     fs.readFile(file, (err, data) => {
+//       if (err) reject('I could not find file');
+//       resolve(data);
+//     });
+//   });
+// };
+// const writeFilePro = (file, data) => {
+//   return new Promise((resolve, reject) => {
+//     fs.writeFile(file, data, err => {
+//       if (err) reject('I could not write file');
+//       resolve('success');
+//     });
+//   });
+// };
+
+// readFilePro(`${__dirname}/dog.txt`)
+//   .then(data => {
+//     return superagent.get(`https://dog.ceo/api/breed/${data}/images/random`);
+//   })
+//   .then(res => {
+//     console.log(res.body.message);
+
+//     writeFilePro('dog-img.txt', res.body.message);
+//   })
+//   .then(res => {
+//     console.log('random dog saved');
+//   })
+//   .catch(err => {
+//     if (err) {
+//       console.log(err.message);
+//     }
+//   });
+
+// fs.readFile(`${__dirname}/dog.txt`, (err, data) => {
+//   console.log(`breed: ${data}`);
+//   superagent
+//     .get(`https://dog.ceo/api/breed/${data}/images/random`)
+//     .then(res => {
+//       if (err) {
+//         console.log('fetching err', err.message);
+//       }
+//       //   console.log(res.body.message);
+//       fs.writeFile('dog-img.txt', res.body.message, err => {
+//         console.log('image done');
+//         if (err) {
+//           console.log('image err', err);
+//         }
+//       });
+//     })
+//     .catch(err => console.log('fetching err', err.message));
+// });
