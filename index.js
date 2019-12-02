@@ -1,4 +1,5 @@
 const fs = require('fs');
+const superagent = require('superagent');
 
 // sync or bloking file reading or writing
 // const textIn = fs.readFileSync('./txt/input.txt', 'utf-8');
@@ -22,10 +23,28 @@ const fs = require('fs');
 //   });
 // });
 
-setTimeout(() => console.log('Timer 1 finished'), 0);
-setImmediate(() => console.log('Immediate 1 finished'));
+// setTimeout(() => console.log('Timer 1 finished'), 0);
+// setImmediate(() => console.log('Immediate 1 finished'));
 
-fs.readFile('test-file.txt', () => {
-  console.log('I/O finished');
+// fs.readFile('test-file.txt', () => {
+//   console.log('I/O finished');
+// });
+// console.log('top level');
+
+fs.readFile(`${__dirname}/dog.txt`, (err, data) => {
+  console.log(`breed: ${data}`);
+  superagent
+    .get(`https://dog.ceo/api/breed/${data}/images/random`)
+    .end((err, res) => {
+      if (err) {
+        console.log('fetching err', err.message);
+      }
+      //   console.log(res.body.message);
+      fs.writeFile('dog-img.txt', res.body.message, err => {
+        console.log('image done');
+        if (err) {
+          console.log('image err', err);
+        }
+      });
+    });
 });
-console.log('top level');
